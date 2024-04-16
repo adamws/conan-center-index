@@ -1,0 +1,4 @@
+sources:
+  "3.9.0":
+    url: "https://github.com/garyhouston/rxspencer/archive/refs/tags/v3.9.0.tar.gz"
+    sha256: "06505066eefe9daa90d9c13469973e6b4d1b52e34a59c465c6a0b8377a2bd7e2"
