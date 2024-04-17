@@ -1,6 +1,6 @@
 from conan import ConanFile
 from conan.tools.cmake import CMake, CMakeToolchain, cmake_layout
-from conan.tools.files import copy, get, rm, rmdir
+from conan.tools.files import apply_conandata_patches, copy, export_conandata_patches, get, rm, rmdir
 from conan.tools.microsoft import is_msvc
 import os
 
@@ -27,6 +27,9 @@ class RxspencerConan(ConanFile):
         "fPIC": True,
     }
 
+    def export_sources(self):
+        export_conandata_patches(self)
+
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
@@ -49,7 +52,11 @@ class RxspencerConan(ConanFile):
         tc.variables["rxshared"] = 1 if self.options.shared else 0
         tc.generate()
 
+    def _patch_sources(self):
+        apply_conandata_patches(self)
+
     def build(self):
+        self._patch_sources()
         cmake = CMake(self)
         cmake.configure()
         cmake.build()

@@ -2,3 +2,8 @@ sources:
   "3.9.0":
     url: "https://github.com/garyhouston/rxspencer/archive/refs/tags/v3.9.0.tar.gz"
     sha256: "06505066eefe9daa90d9c13469973e6b4d1b52e34a59c465c6a0b8377a2bd7e2"
+patches:
+  "3.9.0":
+    - patch_file: "patches/0001-Move-cmake_minimum_required-before-project.patch"
+      patch_description: "Fix cmake for conan compatibility"
+      patch_type: "conan"
